@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1shasw8stk0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsie2"]
+bg_color = Color(0.529067, 0.529067, 0.529067, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.695503, 0.695503, 0.695503, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Panel_Frame" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsie2")

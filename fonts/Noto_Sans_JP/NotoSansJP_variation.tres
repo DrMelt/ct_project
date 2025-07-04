@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://k471akb3357w"]
+
+[ext_resource type="FontFile" uid="uid://fdlo3dunmqeb" path="res://fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf" id="1_hptio"]
+
+[resource]
+base_font = ExtResource("1_hptio")

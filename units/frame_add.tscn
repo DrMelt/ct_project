@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi1ilfa265hck"]
+
+[ext_resource type="Script" uid="uid://c8p24a0s0aiid" path="res://units/FrameAdd.cs" id="1_fyubb"]
+[ext_resource type="Resource" uid="uid://dkw5po3gynb6h" path="res://data/res_schedule.tres" id="2_nilm3"]
+[ext_resource type="PackedScene" uid="uid://d1shasw8stk0p" path="res://units/panel_frame.tscn" id="2_ofspp"]
+
+[node name="FrameAdd" type="MarginContainer" node_paths=PackedStringArray("buttonRef")]
+script = ExtResource("1_fyubb")
+schedule_Res = ExtResource("2_nilm3")
+buttonRef = NodePath("Button")
+
+[node name="Panel" parent="." instance=ExtResource("2_ofspp")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.724643, 0.724643, 0.724643, 1)
+theme_override_font_sizes/font_size = 42
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2

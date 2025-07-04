@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://n07kxw5ifiwf"]
+
+[ext_resource type="Script" uid="uid://i2v7dn3ajue7" path="res://units/content_frame_editor/ContentFrameEditor.cs" id="1_b5k3s"]
+[ext_resource type="PackedScene" uid="uid://caqci5yoqlogl" path="res://units/lable_line_edit.tscn" id="1_viqbo"]
+[ext_resource type="PackedScene" uid="uid://cm0882vby0o8" path="res://units/lable_text_edit.tscn" id="2_b5k3s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86xya"]
+bg_color = Color(0.396889, 0.396889, 0.396889, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj0ow"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ContentFrameEditor" type="Control" node_paths=PackedStringArray("nameEdit", "descriptionEdit", "bindButton_Close")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b5k3s")
+nameEdit = NodePath("MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Lable_LineEdit")
+descriptionEdit = NodePath("MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Lable_TextEdit")
+bindButton_Close = NodePath("MarginContainer2/VBoxContainer/PanelContainer/Button_Close")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_86xya")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Lable_LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_viqbo")]
+layout_mode = 2
+
+[node name="Lable_TextEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_b5k3s")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cj0ow")
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "关闭"
+horizontal_alignment = 1
+
+[node name="Button_Close" type="Button" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2

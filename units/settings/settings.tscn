@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://774j7uh4caqk"]
+
+[ext_resource type="Script" uid="uid://dkxuoybvyd0dy" path="res://units/Settings.cs" id="1_dd0fb"]
+[ext_resource type="PackedScene" uid="uid://caqci5yoqlogl" path="res://units/lable_line_edit.tscn" id="2_dd0fb"]
+[ext_resource type="Resource" uid="uid://bi8p3cipggg7s" path="res://data/AppSettings/res_app_setting.tres" id="2_mu3ya"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0fb"]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Settings" type="Control" node_paths=PackedStringArray("bindButton_Close", "lableLineEdit_GPT", "lableLineEdit_Gaode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dd0fb")
+bindButton_Close = NodePath("MarginContainer/PanelContainer/VBoxContainer/Button")
+appSettings_Res = ExtResource("2_mu3ya")
+lableLineEdit_GPT = NodePath("MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/GPT_key")
+lableLineEdit_Gaode = NodePath("MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/Gaode_key")
+
+[node name="Panel" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dd0fb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "设置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="GPT_key" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" instance=ExtResource("2_dd0fb")]
+layout_mode = 2
+
+[node name="Gaode_key" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" instance=ExtResource("2_dd0fb")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "关闭"

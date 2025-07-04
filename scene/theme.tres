@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cf3if0hyjm1tp"]
+
+[ext_resource type="FontVariation" uid="uid://drd7e83fciui6" path="res://fonts/Noto_Sans_SC/NotoSansSC_variation.tres" id="1_uhpjh"]
+
+[resource]
+Button/font_sizes/font_size = 42
+Button/fonts/font = ExtResource("1_uhpjh")
+Label/font_sizes/font_size = 42
+Label/fonts/font = ExtResource("1_uhpjh")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+TextEdit/font_sizes/font_size = 42
+TextEdit/fonts/font = ExtResource("1_uhpjh")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqci5yoqlogl"]
+
+[ext_resource type="LabelSettings" uid="uid://blf35wfhvky0n" path="res://scene/label_item.tres" id="1_2hjbs"]
+[ext_resource type="Script" uid="uid://lsxn7wejo2ow" path="res://units/LableLineEdit.cs" id="1_rq313"]
+
+[node name="Lable_LineEdit" type="MarginContainer" node_paths=PackedStringArray("label_Item", "lineEdit_Item")]
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_rq313")
+label_Item = NodePath("HBoxContainer/Label_Item")
+lineEdit_Item = NodePath("HBoxContainer/LineEdit")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label_Item" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Label_Item"
+label_settings = ExtResource("1_2hjbs")
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://enq0xu52llew"]
+
+[ext_resource type="Script" uid="uid://djtfro1juc1da" path="res://units/ContentFrame.cs" id="1_y4gtl"]
+[ext_resource type="PackedScene" uid="uid://d1shasw8stk0p" path="res://units/panel_frame.tscn" id="2_8bb12"]
+[ext_resource type="Resource" uid="uid://vaqwwycv1q4g" path="res://data/res_runtime_state.tres" id="2_fla6m"]
+[ext_resource type="Script" uid="uid://dfsg8v2ttvs4u" path="res://units/HBoxContainerTimeShow.cs" id="3_jgk5v"]
+[ext_resource type="PackedScene" uid="uid://n07kxw5ifiwf" path="res://units/content_frame_editor/content_frame_editor.tscn" id="3_q0mxn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ry1uq"]
+font_size = 42
+font_color = Color(0.103743, 0.103744, 0.103744, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8bb12"]
+resource_local_to_scene = true
+font_size = 24
+font_color = Color(0.17, 0.317333, 0.34, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fb1ex"]
+font_size = 24
+font_color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="ContentFrame" type="MarginContainer" node_paths=PackedStringArray("labelTitle", "labelDescription", "timeShowRes", "bindClickedButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4gtl")
+runtimeState_Res = ExtResource("2_fla6m")
+labelTitle = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label_Title")
+labelDescription = NodePath("MarginContainer/VBoxContainer/Label_Text")
+timeShowRes = NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer_TimeShow")
+bindClickedButton = NodePath("Button")
+contentFrameEditor_PKS = ExtResource("3_q0mxn")
+
+[node name="Panel" parent="." instance=ExtResource("2_8bb12")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label_Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "事件标题"
+label_settings = SubResource("LabelSettings_ry1uq")
+autowrap_mode = 3
+
+[node name="HBoxContainer_TimeShow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelTimeRef")]
+layout_mode = 2
+script = ExtResource("3_jgk5v")
+futureTimeColor = Color(0.168627, 0.317647, 0.341176, 1)
+pastTimeColor = Color(0.3196, 0.33728, 0.34, 1)
+labelTimeRef = NodePath("Label_Time")
+
+[node name="Label_Time" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer_TimeShow"]
+layout_mode = 2
+text = "Label_Time"
+label_settings = SubResource("LabelSettings_8bb12")
+
+[node name="Label_Text" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "事件描述"
+label_settings = SubResource("LabelSettings_fb1ex")
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2

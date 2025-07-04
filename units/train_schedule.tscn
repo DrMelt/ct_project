@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://imi7yv1sc626"]
+
+[ext_resource type="PackedScene" uid="uid://d1shasw8stk0p" path="res://units/panel_frame.tscn" id="1_vc4ko"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvu5t"]
+font_size = 24
+font_color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="TrainSchedule" type="MarginContainer"]
+
+[node name="Panel" parent="." instance=ExtResource("1_vc4ko")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label_From" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Label_From"
+label_settings = SubResource("LabelSettings_qvu5t")
+
+[node name="Label_Time" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Label_Time"
+label_settings = SubResource("LabelSettings_qvu5t")
+
+[node name="Label_To" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Label_To"
+label_settings = SubResource("LabelSettings_qvu5t")

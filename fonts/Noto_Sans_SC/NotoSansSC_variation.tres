@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://drd7e83fciui6"]
+
+[ext_resource type="FontFile" uid="uid://dpa74m81rjo5m" path="res://fonts/Noto_Sans_SC/NotoSansSC-VariableFont_wght.ttf" id="1_uempq"]
+
+[resource]
+base_font = ExtResource("1_uempq")
+variation_opentype = {
+2003265652: 500
+}

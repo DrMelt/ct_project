@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RuntimeState_Res" load_steps=2 format=3 uid="uid://vaqwwycv1q4g"]
+
+[ext_resource type="Script" uid="uid://cpfkibcy3wplb" path="res://logic/data/RuntimeState_Res.cs" id="1_xx75c"]
+
+[resource]
+script = ExtResource("1_xx75c")
+metadata/_custom_type_script = "uid://cpfkibcy3wplb"

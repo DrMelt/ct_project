@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm0882vby0o8"]
+
+[ext_resource type="Script" uid="uid://dqqp6wpg2fg2u" path="res://units/LableTextEdit.cs" id="1_gm420"]
+[ext_resource type="LabelSettings" uid="uid://blf35wfhvky0n" path="res://scene/label_item.tres" id="1_sgbhb"]
+
+[node name="Lable_TextEdit" type="MarginContainer" node_paths=PackedStringArray("label_Item", "textEdit_Item")]
+script = ExtResource("1_gm420")
+label_Item = NodePath("VBoxContainer/Label_Item")
+textEdit_Item = NodePath("VBoxContainer/TextEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label_Item" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Label_Item"
+label_settings = ExtResource("1_sgbhb")
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "TextEdit"

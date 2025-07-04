@@ -1,0 +1,203 @@
+[gd_scene load_steps=19 format=3 uid="uid://685o10taepyq"]
+
+[ext_resource type="Theme" uid="uid://cf3if0hyjm1tp" path="res://scene/theme.tres" id="1_wgwml"]
+[ext_resource type="PackedScene" uid="uid://enq0xu52llew" path="res://units/content_frame.tscn" id="2_fb1ex"]
+[ext_resource type="Script" uid="uid://5k7p72p4p86h" path="res://scene/MainScene.cs" id="2_pi6ld"]
+[ext_resource type="Script" uid="uid://bmnt6swh0tue7" path="res://scene/Button_Test.cs" id="2_ry1uq"]
+[ext_resource type="Script" uid="uid://kxcao1kindjj" path="res://scene/ScrollContainerSchedule.cs" id="2_x5n27"]
+[ext_resource type="Resource" uid="uid://dkw5po3gynb6h" path="res://data/res_schedule.tres" id="3_jsie2"]
+[ext_resource type="Resource" uid="uid://bi8p3cipggg7s" path="res://data/AppSettings/res_app_setting.tres" id="4_6e7jr"]
+[ext_resource type="Resource" uid="uid://vaqwwycv1q4g" path="res://data/res_runtime_state.tres" id="5_4cqoh"]
+[ext_resource type="Script" uid="uid://dwyldcrfonp5d" path="res://scene/LabelNowTime.cs" id="5_6s1rr"]
+[ext_resource type="PackedScene" uid="uid://bi1ilfa265hck" path="res://units/frame_add.tscn" id="5_jsie2"]
+[ext_resource type="Script" uid="uid://7msp2p13oiv0" path="res://scene/AppInitialize.cs" id="8_pi0uh"]
+[ext_resource type="Script" uid="uid://co77157olkvxt" path="res://scene/ButtonSave.cs" id="9_86xya"]
+[ext_resource type="Script" uid="uid://ufk6bmphtgfr" path="res://scene/ButtonLoad.cs" id="10_cj0ow"]
+[ext_resource type="PackedScene" uid="uid://774j7uh4caqk" path="res://units/settings/settings.tscn" id="14_4cqoh"]
+[ext_resource type="Script" uid="uid://bemgondkk8li8" path="res://scene/ButtonSetting.cs" id="14_6e7jr"]
+[ext_resource type="Script" uid="uid://d161bm3w7r0v8" path="res://scene/RunTest.cs" id="16_4cqoh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6e7jr"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_6s1rr"]
+font_size = 24
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wgwml")
+script = ExtResource("2_pi6ld")
+runtimeState_Res = ExtResource("5_4cqoh")
+
+[node name="AppInitialize" type="Node" parent="."]
+script = ExtResource("8_pi0uh")
+scheduleRes = ExtResource("3_jsie2")
+settingsRes = ExtResource("4_6e7jr")
+runtimeStateRes = ExtResource("5_4cqoh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer_Time" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label_NowTime" type="Label" parent="VBoxContainer/PanelContainer_Time"]
+layout_mode = 2
+text = "现在时间："
+label_settings = SubResource("LabelSettings_6e7jr")
+script = ExtResource("5_6s1rr")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Interface_Schedule" type="Control" parent="VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.66
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VSplitContainer/Interface_Schedule"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.560955, 0.560955, 0.560955, 1)
+
+[node name="ScrollContainer_Schedule" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/Interface_Schedule" node_paths=PackedStringArray("vBoxContainerRef")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_x5n27")
+scheduleRes = ExtResource("3_jsie2")
+contentFrame_PKS = ExtResource("2_fb1ex")
+frameAdd_PKS = ExtResource("5_jsie2")
+vBoxContainerRef = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VSplitContainer/Interface_Schedule/ScrollContainer_Schedule"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/Interface_Schedule/ScrollContainer_Schedule/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContentFrame" parent="VBoxContainer/VSplitContainer/Interface_Schedule/ScrollContainer_Schedule/MarginContainer/VBoxContainer" instance=ExtResource("2_fb1ex")]
+layout_mode = 2
+
+[node name="FrameAdd" parent="VBoxContainer/VSplitContainer/Interface_Schedule/ScrollContainer_Schedule/MarginContainer/VBoxContainer" instance=ExtResource("5_jsie2")]
+layout_mode = 2
+
+[node name="Interface_GPT" type="Control" parent="VBoxContainer/VSplitContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VSplitContainer/Interface_GPT"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="Panel2" type="MarginContainer" parent="VBoxContainer/VSplitContainer/Interface_GPT"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Interface_GPT/Panel2"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/VSplitContainer/Interface_GPT/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "让AI帮你安排行程"
+wrap_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/Interface_GPT/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="Button" type="Button" parent="VBoxContainer/VSplitContainer/Interface_GPT/Panel2/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("labelRef", "textEditRef")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.36
+text = "Button"
+script = ExtResource("2_ry1uq")
+scheduleRes = ExtResource("3_jsie2")
+appSettingsRes = ExtResource("4_6e7jr")
+labelRef = NodePath("../Label")
+textEditRef = NodePath("../../TextEdit")
+
+[node name="Label" type="Label" parent="VBoxContainer/VSplitContainer/Interface_GPT/Panel2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+label_settings = SubResource("LabelSettings_6s1rr")
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64.35)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Button_Save" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" node_paths=PackedStringArray("appInitializeRef")]
+layout_mode = 2
+text = "Save"
+script = ExtResource("9_86xya")
+appInitializeRef = NodePath("../../../../AppInitialize")
+
+[node name="Button_Load" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" node_paths=PackedStringArray("appInitializeRef")]
+visible = false
+layout_mode = 2
+text = "Load"
+script = ExtResource("10_cj0ow")
+appInitializeRef = NodePath("../../../../AppInitialize")
+
+[node name="Button_Setting" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Settings"
+script = ExtResource("14_6e7jr")
+runtimeState_Res = ExtResource("5_4cqoh")
+settingPKS = ExtResource("14_4cqoh")
+
+[node name="RunTest" type="Node" parent="."]
+script = ExtResource("16_4cqoh")
+appSettings_Res = ExtResource("4_6e7jr")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ScheduleRes" load_steps=2 format=3 uid="uid://dkw5po3gynb6h"]
+
+[ext_resource type="Script" uid="uid://ddehbdiseb673" path="res://logic/data/ScheduleRes.cs" id="2_gbu43"]
+
+[resource]
+script = ExtResource("2_gbu43")
+items = null
+metadata/_custom_type_script = "uid://ddehbdiseb673"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AppSettings_Res" load_steps=2 format=3 uid="uid://bi8p3cipggg7s"]
+
+[ext_resource type="Script" uid="uid://cnj1rqsidsdd6" path="res://data/AppSettings/AppSettings_Res.cs" id="1_7rqo4"]
+
+[resource]
+script = ExtResource("1_7rqo4")
+key_GPT = ""
+metadata/_custom_type_script = "uid://cnj1rqsidsdd6"
